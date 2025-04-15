@@ -14,8 +14,9 @@ export default function login() {
           const { createdSessionId, setActive } = await startSSOFlow({ strategy: "oauth_google" });
       
           if (setActive && createdSessionId) {
-            setActive({session: createdSessionId})
-            //onda ga odvedi na novu stranicu ako je ulogovan
+           await setActive({session: createdSessionId})
+           console.log("✅ Sesija aktivirana!"); 
+           //onda ga odvedi na novu stranicu ako je ulogovan
             router.replace("/(tabs)");
           }
         } catch (error) {
